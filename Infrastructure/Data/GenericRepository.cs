@@ -20,6 +20,12 @@ namespace Infrastructure.Data
         {
             _context=context;
         }
+
+        public async  Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await Applyspecification(spec).CountAsync();
+        }
+
         public async Task<T> GetbyIdAsync(int id)
         {
            return await _context.Set<T>().FindAsync(id);
